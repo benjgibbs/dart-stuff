@@ -105,8 +105,8 @@ class Simulation{
       ctxt.stroke();
       
       ctxt.lineWidth = 0.5;
-      ctxt.fillStyle = "#00F0F0";
-      ctxt.strokeStyle = "#00A0A0";
+      ctxt.fillStyle = "#909090";
+      ctxt.strokeStyle = "#909090";
       
       for(num r = 0; r < gridHeight; r++){
         for(num c = 0; c < gridWidth; c++){
@@ -128,7 +128,7 @@ class Simulation{
   }
   
   void requestRedraw() {
-    window.setTimeout(timeout, 2000);
+    window.setTimeout(timeout, 500);
     //window.requestAnimationFrame(draw);
   }
   
@@ -200,6 +200,8 @@ class Simulation{
         result += cell(x+1, y+1).status;
       }
     }
+    if(result > 2)
+      print('Neighbours of ($x,$y) total $result');
     return result;
   }
   
@@ -209,9 +211,9 @@ void main() {
   CanvasElement canvas = query("#container");
   int width = canvas.width;
   int height = canvas.height;
-  num gridWidth = 100;//250;
-  num gridHeight = 80;//200;
-  num startingPc = 5;
+  num gridWidth = 200;//100;//250;
+  num gridHeight = 160;//80;//200;
+  num startingPc = 20;
   print('Creating a new simulation');
   Simulation sim = new Simulation(gridWidth, gridHeight, startingPc, canvas);
   sim.setup();
